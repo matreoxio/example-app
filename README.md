@@ -1,3 +1,5 @@
+Test File - 
+
 [testFile.csv](https://github.com/user-attachments/files/20495742/testFile.csv)
 
 
@@ -44,6 +46,9 @@ http://127.0.0.1:8000/api/upload (POST — for CSV file upload)
 http://127.0.0.1:8000/api/get (GET — retrieve shipment data with status names)
 
 ✅ 7. Test the CSV Upload
+
+![image](https://github.com/user-attachments/assets/d214afa4-eeed-4080-bfa5-7e1d66413612)
+
 
 Use Postman or curl:
 
