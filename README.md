@@ -73,3 +73,63 @@ curl http://127.0.0.1:8000/api/get
 Or open it in browser: http://127.0.0.1:8000/api/get
 
 This should return all shipments with their status name (not ID).
+
+🧱 Architecture & Highlights
+
+📂 Project Structure
+
+Laravel 12 backend application following MVC architecture.
+
+Clean separation of concerns using:
+
+Controllers for request handling
+
+Services for business logic
+
+Models for database interaction
+
+Migrations and Seeders for schema and data setup
+
+📦 Key Features
+
+CSV Upload API (POST /api/upload)
+
+Accepts CSV files with columns: shipment_id, origin, destination, weight, status
+
+Validates file format and contents
+
+Maps human-readable status (e.g., Delivered) to foreign key (status_id)
+
+Inserts clean, validated data into the shipments table
+
+Data Retrieval API (GET /api/get)
+
+Returns all shipment records
+
+Replaces status_id with corresponding status.name via Eloquent relationship
+
+JSON formatted for easy frontend integration
+
+🧪 Validations
+
+Headers must match exactly: shipment_id, origin, destination, weight, status
+
+Required fields validated per row
+
+status names matched against the seeded statuses table
+
+Prevents incomplete or corrupt data from being inserted
+
+🔐 Security
+
+File size limited to 2MB
+
+Only .csv and .txt MIME types are accepted
+
+Uses Laravel’s built-in validation system for safe file handling
+
+🔄 Relationships
+
+Shipment belongsTo Status
+
+Eager loading used to avoid N+1 queries (Shipment::with('status'))
